@@ -7,30 +7,31 @@
 */
 
 export function runUI(settings) {
-  const entryPoint = document.getElementById('root');
-  let greetings = generateElement('div', settings);
-
-  userListeners(entryPoint,greetings, settings);
+  settings.forEach( settingElement => {
+    const entryPoint = document.getElementById(settingElement.entryPoint);
+    let greetings = generateElement('div', settingElement);
   
-  entryPoint.append(greetings);
+    userListeners(entryPoint, greetings, settingElement);
+    
+    entryPoint.append(greetings);
+  })
 };
 
 function generateElement(el, settings) {
   let innerHTML = '';
-  let greetings = document.createElement(el);
-  greetings.classList.add(settings.classList);
-  greetings.id = settings.id;
+  let element = document.createElement(el);
+  element.classList.add(settings.classList);
+  element.id = settings.id;
   settings.innerHTML.forEach(value => innerHTML = innerHTML+`<div>${value}</div>`);
-  greetings.innerHTML = innerHTML;
-  return greetings;
+  element.innerHTML = innerHTML;
+  return element;
 }
 
 function userListeners(rootEl, element, settings) {
   element.addEventListener('click', () => element.classList.toggle('hidden'));
   document.addEventListener('keydown',  (event) => {
     if(event.code === 'Space') {
-      const searchEl = document.getElementById(settings.id);
-      searchEl === null ? rootEl.append(element): searchEl.remove();
+      document.getElementById(settings.id) === null ? rootEl.append(element): document.getElementById(settings.id).remove();
     }
   });
 }

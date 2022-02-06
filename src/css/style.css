@@ -15,9 +15,12 @@ html {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
+.prompt {
+  margin-top: 20px;
+}
 
 /*Стилизация основного блока с текстом на странице*/
-.text_container__header {
+.text_container__box {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -26,20 +29,19 @@ html {
   padding: 15px;
   border: 1px solid #c6d2e9;;
   border-radius: 5px;
-  color: rgba(0, 0, 0, 0.925);
-  background-color: #0b84da14;
+  color: rgba(85, 81, 81, 0.842);
+  background-color: #96b1c514;;
 }
-.text_container__header:hover {
+.text_container__box:hover {
   border: 1px solid #d6e9c6;
-  color: rgb(73, 73, 80);
-  background-color: #dff0d8;
+  background-color: #f4fdf1;
   transition: 0.2s;
 }
-.text_container__header > div {
+.text_container__box > div {
  margin-top: 10px;
 }
-.text_container__header > div:hover {
-  color: rgb(200 3 94 / 93%);
+.text_container__box > div:hover {
+  color: rgb(0, 0, 0);
  }
 .hidden {
   opacity: 0;
